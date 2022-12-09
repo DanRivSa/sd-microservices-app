@@ -1,7 +1,12 @@
+const rabbitService = require('../services/RabbitMQ');
+
 class OperationsController{
 
+
     async test(req,res){
-        res.status(200).send({message:'docker 🐳 is lit!!'});
+        let response = {message:'docker 🐳 is lit!!'};   
+        await rabbitService.PublishToQueue('Test',response.toString());
+        res.status(200).send(response);
     }
 }
 

@@ -1,9 +1,21 @@
 services:
+
+  message-broker:
+    container_name: rabbit-server
+    image: rabbitmq:3.10-management-alpine
+    networks:
+      - sd-net
+    ports:
+      - 5672:5672
+      - 81:15672
+
   web-server:
+    depends_on:
+      - message-broker
     build: ./web-server
     container_name: web-server
     ports:
-      - 84:8081
+      - 8081:8081
     networks:
       - sd-net
     volumes:
