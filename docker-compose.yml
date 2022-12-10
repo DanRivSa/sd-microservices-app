@@ -21,6 +21,16 @@ services:
     volumes:
       - ./web-server:/usr/src/app
 
+  client:
+    depends_on:
+      - web-server
+    container_name: client-app
+    build: ./client
+    networks:
+      - sd-net
+    volumes:
+      - ./client:/usr/src/app
+
 networks:
   sd-net:
     name: sd-network
