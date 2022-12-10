@@ -30,6 +30,13 @@ services:
       - sd-net
     volumes:
       - ./client:/usr/src/app
+      - type: bind
+        source: ./in
+        target: /usr/src/app/in
+      - type: bind
+        source: ./out
+        target: /usr/src/app/out
+
 
 networks:
   sd-net:
