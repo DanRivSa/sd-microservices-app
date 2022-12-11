@@ -16,8 +16,8 @@ class RabbitMQService{
     }*/
     
     ConsumeQueueMsg = async (queueName)=>{
-        let conn = await this.connection();
-        let ch = await this.channel(conn);
+        let conn = await amqp.connect(CONN_URL);
+        let ch = await conn.createChannel();
         ch.consume(queueName,(msg)=>{
             console.log('Mensaje recibido: ',msg.content.toString());
             channel.ack(msg);

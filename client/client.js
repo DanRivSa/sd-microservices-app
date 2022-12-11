@@ -1,5 +1,6 @@
 const file = require("./services/file");
 const httpHandler = require('./services/handler');
+const encryption = require('./services/encryption');
 
 class Client {
 
@@ -11,7 +12,10 @@ class Client {
                 const key = await httpHandler.Post("http://web-server:8081/sign",{
                     username: userData[1],
                     messagetext: userData[2],
-                })
+                });
+                const messageHash = encryption.Encrypt(userData[2]);
+                const signature = encryption.Encrypt(messageHash + key);
+                file.Write("out/salida.txt",key,signature);
                 break;
             case 'AUTENTICAR':
                 
