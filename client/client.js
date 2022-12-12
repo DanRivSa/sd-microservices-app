@@ -28,4 +28,6 @@ class Client {
 
 }
 
-Client.Start();
+setTimeout(()=>{
+    Client.Start();
+},5000);

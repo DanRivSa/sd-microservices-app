@@ -21,6 +21,22 @@ services:
     volumes:
       - ./web-server:/usr/src/app
 
+  key-server:
+    depends_on:
+      - message-broker
+      - web-server
+    build: ./key-server
+    container_name: key-server
+    ports:
+      - 3000:3000
+    networks:
+      - sd-net
+    volumes:
+      - ./key-server:/usr/src/app
+      - type: bind
+        source: ./db
+        target: /usr/src/app/db
+
   client:
     depends_on:
       - web-server
