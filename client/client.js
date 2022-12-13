@@ -9,7 +9,7 @@ class Client {
 
         switch (userData[0]) {
             case 'FIRMAR':
-                const key = await httpHandler.Post("http://web-server:8081/sign",{
+                const key = await httpHandler.Post("http://proxy-server:8081/sign",{
                     username: userData[1],
                     messagetext: userData[2],
                 });
