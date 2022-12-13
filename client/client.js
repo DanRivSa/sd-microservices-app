@@ -5,7 +5,7 @@ const encryption = require('./services/encryption');
 class Client {
 
     static async Start(){
-        const userData = file.Read("in/integrity.txt");
+        const userData = file.Read("in/sign.txt");
 
         switch (userData[0]) {
             case 'FIRMAR':
@@ -16,6 +16,10 @@ class Client {
                 const messageHash = encryption.Encrypt(userData[2]);
                 const signature = encryption.Encrypt(messageHash + key);
                 file.Write("out/sign.txt",key,signature);
+                console.log("SE HA FIRMADO ELECTRONICAMENTE EL DOCUMENTO.......");
+                console.log("-----------FILE OUTPUT---------------------");
+                console.log("LINE 1: " + key);
+                console.log("LINE 2: " + signature);
                 break;
             case 'AUTENTICAR':
 
@@ -26,8 +30,14 @@ class Client {
                 
                 if (signatureB1 == signatureB2) {
                     file.Write("out/integrity.txt",'INTEGRO');
+                    console.log("SE HA VERIFICADO LA INTEGRIDAD DEL MENSAJE.......")
+                    console.log("-----------FILE OUTPUT---------------------");
+                    console.log("LINE 1: INTEGRO");
                 } else {
                     file.Write("out/integrity.txt",'NO INTEGRO');
+                    console.log("SE HA VERIFICADO LA INTEGRIDAD DEL MENSAJE.......")
+                    console.log("-----------FILE OUTPUT---------------------");
+                    console.log("LINE 1: NO INTEGRO");
                 }
 
                 break;
