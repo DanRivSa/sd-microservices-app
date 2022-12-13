@@ -16,7 +16,7 @@ app.use(require('./routes/operation.routes'));
  
 //server init
 app.listen(app.get('port'),(req,res)=>{
-    console.log('******WEB SERVER API****** \n');
+    console.log('******PROXY SERVER API****** \n');
     console.log('app: ',app.get('name'));
     console.log('port: ',app.get('port')); 
 });
