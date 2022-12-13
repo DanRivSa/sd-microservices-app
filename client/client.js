@@ -7,12 +7,12 @@ class Client {
     static async Start(){
 
         console.clear();
-        console.log("SISTEMA DE OPERACIONES - PROYECTO DE DISTRIBUIDOS POR DANIEL RIVERO Y JOSE FLORES \n\n");
+        console.log("SISTEMA DE OPERACIONES - PROYECTO DE DISTRIBUIDOS POR DANIEL RIVERO Y JOSE FLORES");
         console.log("En el sistema se pueden ejecutar las siguientes operaciones: \n");
-        console.log("1- FIRMAR \n");
-        console.log("2- AUTENTICAR\n");
-        console.log("3- INTEGRIDAD\n\n");
-        console.log("El sistema buscará leer un archivo en la carpeta 'in', llamado input.txt, el cual detectará la operación a realizar y los datos provistos en el archivo.\n\n");
+        console.log("1- FIRMAR");
+        console.log("2- AUTENTICAR");
+        console.log("3- INTEGRIDAD\n");
+        console.log("El sistema buscará leer un archivo en la carpeta 'in', llamado input.txt, el cual detectará la operación a realizar y los datos provistos en el archivo.\n");
         console.log("LEYENDO ARCHIVO input.txt ...\n");
         let userData;
         try{
@@ -23,6 +23,7 @@ class Client {
         }
 
         let op = userData[0];
+        console.log(`Operación a ejecutar es "${op}"\n`);
 
         switch (op) {
             case 'FIRMAR': //FIRMAR
@@ -33,20 +34,31 @@ class Client {
                 const messageHash = encryption.Encrypt(userData[2]);
                 const signature = encryption.Encrypt(messageHash + key);
                 file.Write("out/sign.txt",key,signature);
+                console.log("SE HA FIRMADO ELECTRONICAMENTE EL DOCUMENTO.......");
+                console.log("-----------FILE OUTPUT---------------------");
+                console.log("LINE 1: " + key);
+                console.log("LINE 2: " + signature);
+                console.log('Puede revisar la salida en el archivo "out/sign.txt"');
                 break;
             case 'AUTENTICAR': //'AUTENTICAR'
 
-                break;
+            break;
             case 'INTEGRIDAD': //'INTEGRIDAD'
-                userData = file.Read("in/integrity.txt");
-                const signatureB1 = encryption.Encrypt(encryption.Encrypt(userData[2]) + userData[1]);
-                const signatureB2 = userData[3];
-                
-                if (signatureB1 == signatureB2) {
-                    file.Write("out/integrity.txt",'INTEGRO');
-                } else {
-                    file.Write("out/integrity.txt",'NO INTEGRO');
-                }
+            const signatureB1 = encryption.Encrypt(encryption.Encrypt(userData[2]) + userData[1]);
+            const signatureB2 = userData[3];
+            
+            if (signatureB1 == signatureB2) {
+                file.Write("out/integrity.txt",'INTEGRO');
+                console.log("SE HA VERIFICADO LA INTEGRIDAD DEL MENSAJE.......")
+                console.log("-----------FILE OUTPUT---------------------");
+                console.log("LINE 1: INTEGRO");
+            } else {
+                file.Write("out/integrity.txt",'NO INTEGRO');
+                console.log("SE HA VERIFICADO LA INTEGRIDAD DEL MENSAJE.......")
+                console.log("-----------FILE OUTPUT---------------------");
+                console.log("LINE 1: NO INTEGRO");
+            }
+            console.log('Puede revisar la salida en el archivo "out/integrity.txt"');
 
                 break;
             default:

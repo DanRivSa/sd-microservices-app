@@ -1,3 +1,6 @@
 */node_modules
-/in
-/out
+/db
+/in/input.txt
+/out/sign.txt
+/out/integrity.txt
+/out/authenticate.txt
