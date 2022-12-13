@@ -5,7 +5,7 @@ const encryption = require('./services/encryption');
 class Client {
 
     static async Start(){
-        const userData = file.Read("in/entrada.txt");
+        const userData = file.Read("in/integrity.txt");
 
         switch (userData[0]) {
             case 'FIRMAR':
@@ -15,12 +15,21 @@ class Client {
                 });
                 const messageHash = encryption.Encrypt(userData[2]);
                 const signature = encryption.Encrypt(messageHash + key);
-                file.Write("out/salida.txt",key,signature);
+                file.Write("out/sign.txt",key,signature);
                 break;
             case 'AUTENTICAR':
-                
+
                 break;
-            default:
+            case 'INTEGRIDAD':
+                const signatureB1 = encryption.Encrypt(encryption.Encrypt(userData[2]) + userData[1]);
+                const signatureB2 = userData[3];
+                
+                if (signatureB1 == signatureB2) {
+                    file.Write("out/integrity.txt",'INTEGRO');
+                } else {
+                    file.Write("out/integrity.txt",'NO INTEGRO');
+                }
+
                 break;
         }
     }
@@ -28,6 +37,7 @@ class Client {
 
 }
 
+console.log("CLIENTE INICIANDO.......")
 setTimeout(()=>{
     Client.Start();
-},5000);
+},10000);
