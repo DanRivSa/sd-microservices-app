@@ -1,18 +1,18 @@
 services:
 
-  web-server:
-    build: ./web-server
-    container_name: web-server
+  proxy-server:
+    build: ./proxy-server
+    container_name: proxy-server
     ports:
       - 8081:8081
     networks:
       - sd-net
     volumes:
-      - ./web-server:/usr/src/app
+      - ./proxy-server:/usr/src/app
 
   key-server:
     depends_on:
-      - web-server
+      - proxy-server
     build: ./key-server
     container_name: key-server
     ports:
@@ -27,7 +27,7 @@ services:
 
   client:
     depends_on:
-      - web-server
+      - proxy-server
       - key-server
     container_name: client-app
     build: ./client
