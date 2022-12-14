@@ -31,7 +31,6 @@
     * key-server:3000
     * authentication-server:5003 
     ```
-    ```
 5. Ingrese en el archivo `input.txt` la operacion a procesar en los siguientes formatos
 
     * Operación Firma
