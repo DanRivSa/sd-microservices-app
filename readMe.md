@@ -1,6 +1,16 @@
 # Instrucciones de ejecución
 
-### **_Este proyecto requiere ser ejecutado con docker_**
+<img 
+    style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 30%;"
+    src="https://logos-world.net/wp-content/uploads/2021/02/Docker-Logo-700x394.png?size=400" 
+    alt="Docker logo">
+</img>
+<p style="text-align: center; font-weight:bold">
+ Este proyecto requiere ser ejecutado con docker
+</p>
 
 1. Ejecute el comando `npm install` en los siguientes directorios:
     * client
@@ -31,7 +41,7 @@
     * key-server:3000
     * authentication-server:5003 
     ```
-5. Ingrese en el archivo `input.txt` la operacion a procesar en los siguientes formatos
+5. Ingrese en el archivo `input.txt` la operacion a procesar en cualquiera de los siguientes formatos
 
     * Operación Firma
     ```
@@ -59,7 +69,10 @@
         docker logs client-app
     ```
 ## Integrantes
-<div style="margin: 0 auto">
+<div style="
+margin-left:auto;
+margin-right:auto;
+">
 
 <table>
     <tbody>
