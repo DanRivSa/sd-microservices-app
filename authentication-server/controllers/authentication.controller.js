@@ -1,5 +1,6 @@
 const fileHandler = require('../helpers/file_handler');
 
+//controlador de autenticacion
 class AuthenticationController{
     async Authenticate(req,res){
         //variable booleana para manejar validez o invalidez del ususario, por defecto en falso 

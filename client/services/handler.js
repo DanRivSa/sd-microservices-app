@@ -1,5 +1,6 @@
 const axios = require("axios").default;
 
+//metodo de manejo generico de peticiones  http
 class HttpHandler {
 
   static async Post(url,data) {

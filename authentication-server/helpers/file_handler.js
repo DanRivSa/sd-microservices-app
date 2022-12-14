@@ -1,15 +1,12 @@
 const fs = require('fs');
 
+//helper para manejo de archivos
 class FileHandler{
 
-    Write(path, ...data){
-        for (const value of data) {
-            fs.appendFileSync(path, value.toString() + '\n');
-        }
-    }
-
+    //Metodo para leer en archivo
     Read(path){
         const fileData = fs.readFileSync(path);
+        //devuelve array de strings separado por saltos de linea
         return fileData.toString().split('\n');
     }
 }
