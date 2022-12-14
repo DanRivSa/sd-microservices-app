@@ -1,6 +1,7 @@
 const file = require("./services/file");
 const httpHandler = require('./services/handler');
 const encryption = require('./services/encryption');
+const proxy_server_URL = "http://proxy-server:8081";
 
 class Client {
 
@@ -27,7 +28,7 @@ class Client {
 
         switch (op) {
             case 'FIRMAR': //FIRMAR
-                const key = await httpHandler.Post("http://proxy-server:8081/sign",{
+                const key = await httpHandler.Post(`${proxy_server_URL}/sign`,{
                     username: userData[1],
                     messagetext: userData[2],
                 });
@@ -41,7 +42,23 @@ class Client {
                 console.log('Puede revisar la salida en el archivo "out/sign.txt"');
                 break;
             case 'AUTENTICAR': //'AUTENTICAR'
-
+                const result = await httpHandler.Post(`${proxy_server_URL}/authenticate`,
+                {
+                    user: userData[2],
+                    user_key:userData[1] 
+                });
+                if(result){
+                    file.Write("out/authenticate.txt",'VÁLIDO');
+                    console.log("SE HA VERIFICADO LA IDENTIDAD DEL USUARIO Y CLAVE INGRESADO.......")
+                    console.log("-----------FILE OUTPUT---------------------");
+                    console.log("LINE 1: VÁLIDO");
+                }else{
+                    file.Write("out/authenticate.txt",'INVÁLIDO');
+                    console.log("SE HA VERIFICADO LA IDENTIDAD DEL USUARIO Y CLAVE INGRESADO.......")
+                    console.log("-----------FILE OUTPUT---------------------");
+                    console.log("LINE 1: INVÁLIDO");
+                }
+                console.log('Puede revisar la salida en el archivo "out/authenticate.txt"');
             break;
             case 'INTEGRIDAD': //'INTEGRIDAD'
             const signatureB1 = encryption.Encrypt(encryption.Encrypt(userData[2]) + userData[1]);

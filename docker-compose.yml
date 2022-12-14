@@ -25,10 +25,26 @@ services:
         source: ./db
         target: /usr/src/app/db
 
+  authentication-server:
+    depends_on:
+      - proxy-server
+    build: ./authentication-server
+    container_name: authentication-server
+    ports:
+      - 5003:5003
+    networks:
+      - sd-net
+    volumes:
+      - ./authentication-server:/usr/src/app
+      - type: bind
+        source: ./db
+        target: /usr/src/app/db
+
   client:
     depends_on:
       - proxy-server
       - key-server
+      - authentication-server
     container_name: client-app
     build: ./client
     networks:
