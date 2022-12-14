@@ -5,13 +5,14 @@
   "main": "authentication.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon authentication.js --legacy-watch"
+    "start": "nodemon authentication.js --legacy-watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "md5": "^2.3.0"
+    "md5": "^2.3.0",
+    "rwlock": "^5.0.0"
   }
 }

@@ -1,4 +1,8 @@
 const fs = require('fs');
+var ReadWriteLock = require('rwlock');
+ 
+//lock para exclusion mutua
+var lock = new ReadWriteLock();
 
 //metodos helpers para manejo de archivos
 class File {
@@ -10,16 +14,19 @@ class File {
     }
     //metodo de escritura
     static Write(path, ...data){
-        this.Clear(path);
-        for (const value of data) {
-            fs.appendFileSync(path, value.toString() + '\n');
-        }
+        lock.writeLock(function (release) {
+            // do stuff
+            //limpia archivo
+            fs.writeFileSync(path,'');
+            //escribe data
+            for (const value of data) {
+                fs.appendFileSync(path, value.toString() + '\n');
+            }
+            release();
+        });
     }
 
-    //metodo de limpiado
-    static Clear(path){
-        fs.writeFileSync(path,'');
-    }
+
 
 }
 

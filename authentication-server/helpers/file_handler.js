@@ -4,9 +4,10 @@ const fs = require('fs');
 class FileHandler{
 
     //Metodo para leer en archivo
+
     Read(path){
         const fileData = fs.readFileSync(path);
-        //devuelve array de strings separado por saltos de linea
+        //Devuelve array de strings separados por saltos de linea 
         return fileData.toString().split('\n');
     }
 }
