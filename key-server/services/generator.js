@@ -1,4 +1,5 @@
 
+//clase para manejo de generacion de claves
 class Generator {
 
     static Generate(min,max){

@@ -4,7 +4,7 @@ const app = express();
 const port_number = 8081;
 
 //server configuration
-app.set('name','web server API');
+app.set('name','proxy server API');
 app.set('port',port_number);
 
 //middlewares

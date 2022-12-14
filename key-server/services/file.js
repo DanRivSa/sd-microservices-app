@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+//clase para  manejo de archivos
 class File {
 
     static Write(path, ...data){
