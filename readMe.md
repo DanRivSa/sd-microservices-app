@@ -51,7 +51,7 @@
     ```
     * Opración Integridad
     ```
-    NTEGRIDAD
+    INTEGRIDAD
     <clave de usuario>
     <Texto del Mensaje>
     <Texto de la Firma del Mensaje>
@@ -68,6 +68,8 @@
         docker container start client-app
         docker logs client-app
     ```
+   **_NOTA: Los pasos 5 y 6 se repetiran por cada prueba a realizar, con base a las tres operaciones_**
+
 ## Integrantes
 <div style="
 margin-left:auto;
@@ -99,3 +101,18 @@ margin-right:auto;
     </tbody>
 </table>
 </div>
+
+## Librerías
+<div style="
+margin-left:auto;
+margin-right:auto;
+">
+</div>
+
+- [Nodejs](https://nodejs.org/en/docs/)
+- [Expressjs](https://expressjs.com/)
+- [fs](https://www.geeksforgeeks.org/node-js-file-system/)
+- [axios](https://axios-http.com/docs/intro)
+- [md5](https://www.npmjs.com/package/md5)
+- [rwlock](https://www.npmjs.com/package/rwlock)
+- [docker](https://docs.docker.com/get-docker/)
