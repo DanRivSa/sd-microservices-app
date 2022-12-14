@@ -82,7 +82,7 @@ margin-right:auto;
   <img src="https://avatars.githubusercontent.com/u/34323866?size=100">
 </a>
 <br>
-@DanRivSa
+@danrivsa
 <br>
 <small>Daniel Rivero</small>
             </td>
