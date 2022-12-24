@@ -1,13 +1,13 @@
 # Instrucciones de ejecución
-
+<div align="center">
 <img 
     style="display: block; 
-           margin-left: auto;
-           margin-right: auto;
            width: 30%;"
     src="https://logos-world.net/wp-content/uploads/2021/02/Docker-Logo-700x394.png?size=400" 
     alt="Docker logo">
 </img>
+</div>
+
 <p style="text-align: center; font-weight:bold">
  Este proyecto requiere ser ejecutado con docker
 </p>
@@ -76,7 +76,7 @@ margin-left:auto;
 margin-right:auto;
 ">
 
-<table>
+<table align="center">
     <tbody>
         <tr>
             <td>
