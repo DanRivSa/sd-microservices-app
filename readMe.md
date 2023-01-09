@@ -1,4 +1,23 @@
+# Diagrama de Arquitectura
+
+<p>Sistema de multiples servidores para la realización de operaciones de cifrado y firma de mensajes dentro de un ambiente de TI compuesto por una red virtual y distintos contenedores (aplicaciones cliente-servidor)</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/34323866/211225726-9ee15209-ba35-4ca4-8c71-5d8801b7ab71.png"/>
+</div>
+<!--
+![diagrama proyecto distribuidos](https://user-images.githubusercontent.com/34323866/211225726-9ee15209-ba35-4ca4-8c71-5d8801b7ab71.png)
+-->
+
+
+
 # Instrucciones de ejecución
+
+
+<p style="text-align: center; font-weight:bold">
+ Este proyecto requiere ser ejecutado con docker
+</p>
+
 <div align="center">
 <img 
     style="display: block; 
@@ -7,10 +26,6 @@
     alt="Docker logo">
 </img>
 </div>
-
-<p style="text-align: center; font-weight:bold">
- Este proyecto requiere ser ejecutado con docker
-</p>
 
 1. Ejecute el comando `npm install` en los siguientes directorios:
     * client
