@@ -5,12 +5,6 @@
 <div align="center">
     <img src="https://user-images.githubusercontent.com/34323866/211435090-18391ed3-500f-420a-8b03-aa013176386e.png"/>
 </div>
-<!--
-![diagrama de proyecto dist](https://user-images.githubusercontent.com/34323866/211435090-18391ed3-500f-420a-8b03-aa013176386e.png)
-
--->
-
-
 
 # Instrucciones de ejecución
 
