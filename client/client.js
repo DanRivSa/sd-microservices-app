@@ -38,10 +38,10 @@ class Client {
                     username: userData[1],
                     messagetext: userData[2],
                 });
-                //se obtiene el hash del mensaje en el input
-                const messageHash = encryption.Encrypt(userData[2]);
-                //se encripta el ,esaje de hash junto con la llave para firmar
-                const signature = encryption.Encrypt(messageHash + key);
+                //se genera hash md5 del mensaje
+                const msghash = encryption.hashMD5(userData[2]);
+                //se encripta el mensaje de hash junto con la llave para firmar
+                const signature = encryption.Encrypt( key,msghash).toString();
                 //se exporta el resultado de la operacion
                 file.Write("out/sign.txt",key,signature);
                 console.log("SE HA FIRMADO ELECTRONICAMENTE EL DOCUMENTO.......");
@@ -72,12 +72,12 @@ class Client {
                 console.log('Puede revisar la salida en el archivo "out/authenticate.txt"');
             break;
             case 'INTEGRIDAD': //'INTEGRIDAD'
-            //se encripta el texto de la firma y la clave del usuario para obtener la firma
-            const signatureB1 = encryption.Encrypt(encryption.Encrypt(userData[2]) + userData[1]);
-            //se obtiene la firma ingresada en el input
-            const signatureB2 = userData[3];
-            //se comparan ambas firmas y se devuelve un resultado
-            if (signatureB1 == signatureB2) {
+            //Se decripta la firma electronica para obtener el hash
+            const msgHash1 = encryption.Decrypt(userData[1], userData[3]);
+            //Se obtiene el hash md5 del mensaje ingresado
+            const msgHash2 = encryption.hashMD5(userData[2]);
+            //se comparan ambos hash
+            if (msgHash1 === msgHash2) {
                 file.Write("out/integrity.txt",'INTEGRO');
                 console.log("SE HA VERIFICADO LA INTEGRIDAD DEL MENSAJE.......")
                 console.log("-----------FILE OUTPUT---------------------");

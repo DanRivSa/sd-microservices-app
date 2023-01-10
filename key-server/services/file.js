@@ -13,6 +13,12 @@ class File {
             release();
         });
     }
+
+    static Read(path){
+        const fileData = fs.readFileSync(path);
+        //Devuelve array de strings separados por saltos de linea 
+        return fileData.toString().split('\n');
+    }
 }
 
 module.exports = File;
