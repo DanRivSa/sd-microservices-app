@@ -3,10 +3,11 @@
 <p>Sistema de multiples servidores para la realización de operaciones de cifrado y firma de mensajes dentro de un ambiente de TI compuesto por una red virtual y distintos contenedores (aplicaciones cliente-servidor)</p>
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/34323866/211225726-9ee15209-ba35-4ca4-8c71-5d8801b7ab71.png"/>
+    <img src="https://user-images.githubusercontent.com/34323866/211435090-18391ed3-500f-420a-8b03-aa013176386e.png"/>
 </div>
 <!--
-![diagrama proyecto distribuidos](https://user-images.githubusercontent.com/34323866/211225726-9ee15209-ba35-4ca4-8c71-5d8801b7ab71.png)
+![diagrama de proyecto dist](https://user-images.githubusercontent.com/34323866/211435090-18391ed3-500f-420a-8b03-aa013176386e.png)
+
 -->
 
 
